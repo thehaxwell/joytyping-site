@@ -1,20 +1,25 @@
 ---
+import { Card } from '@astrojs/starlight/components';
 ---
 
-Starting to download <span id="download-name">...</span>
+<div style="display: none;" id="download-feedback-card">
+  <Card title="Thanks for downloading Joytyping!" icon="star">
+    Starting to download "<span id="download-name">...</span>"...
+  </Card>
+</div>
 
 <script>
   let urlParams = new URLSearchParams(window.location.search);
   let downloadVersion = urlParams.get('dv');
   let downloadName = document.querySelector("#download-name");
   downloadName.innerText = downloadVersion;
-
-  function downloadFile(file) {
-    // Create a link and set the URL using `createObjectURL`
+  
+  function downloadFile(downloadPath) {
+    // Create a link and set the URL
     const link = document.createElement("a");
     link.style.display = "none";
-    link.href = URL.createObjectURL(file);
-    link.download = file.name;
+    link.href = `https://github.com/thehaxwell/joytyping/releases/download/${downloadPath}`;
+    link.download = downloadPath;
 
     // It needs to be added to the DOM so it can be clicked
     document.body.appendChild(link);
@@ -28,11 +33,10 @@ Starting to download <span id="download-name">...</span>
     }, 0);
   }
 
-  // Dynamically create a File
-  const myFile = new File([`${new Date()}: ${downloadVersion}`], "joytyping.txt");
-
   // Download it using our function
   if(urlParams.has('dv')) {
-    downloadFile(myFile);
+    let downloadFeedbackCard = document.querySelector("#download-feedback-card");
+    downloadFeedbackCard.style = "display: block;";
+    downloadFile(downloadVersion);
   }
 </script>
