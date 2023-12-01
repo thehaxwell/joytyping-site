@@ -7,4 +7,51 @@ import StartDownload from '../../../components/StartDownload.astro'
 
 <StartDownload/>
 
-Here's how to get started...
+Joytyping needs settings to know how to work the way you prefer. There are user settings and layout settings. We'll help you set those up.
+
+## 1. Setup user settings
+
+If you're running Windows, create the joytyping folder so that it's located here:
+`C:\Users\yourusername\AppData\joytyping`
+
+If you're running linux, create the joytyping directory so that it's located here:
+`/home/yourusername/.config/joytyping`
+
+Remember to replace "yourusername" with your actual username.
+
+Now in the joytyping folder you just created, you'll add your user settings file.
+Make a file called `user.toml` with the following contents:
+
+```
+[global]
+default_profile= "first profile"
+
+[[profiles]]
+name="first profile"
+layout_settings_relative_file_path="vallack-layout/main.toml"
+
+# Set to true if your controller's d-pad is above the 
+# left-stick, like a Playstation controller.
+# Set to false if the d-pad is below the left-stick,
+# like a XBox controller.
+left_upper_is_d_pad = true
+```
+
+## 2. Setup layout settings
+
+[Download the layout as a zip folder](https://github.com/thehaxwell/vallack-layout/archive/refs/tags/v0.0.0.zip). We're starting you out with [the Vallack layout](https://github.com/thehaxwell/vallack-layout).
+
+Unzip the contents of the zip folder in the joytyping folder so that it looks like this.
+```
+joytyping
+├── start.toml
+└── vallack-layout
+    ├── main.toml
+    ...
+```
+
+## You're ready
+
+That's it! If you followed these steps correctly then you can run Joytyping, connect your gaming-controller, and start typing.
+
+If you're having problems then please email me, Haxwell ([thehaxwell@proton.me](thehaxwell@proton.me)). I'll gladly help you out.
