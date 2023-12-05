@@ -1,0 +1,56 @@
+---
+title: Customise click behaviours
+sidebar:
+  order: 4
+  hidden: true
+---
+
+Joytyping lets you type by clicking as you would expect
+- the two sets of 4 buttons on the left and right sides of your controller
+- the 4 triggers: R1, R2, L1 and L2.
+
+## Clicking with sticks
+
+Some layers in the layout you're using might allow you to use the left and right sticks like buttons: tilting past a certain point in a direction triggers a click.
+
+![Left and right sticks both at 0.5 all-round thresholds](/std-at-rest.svg)
+
+```
+[profiles.stick_switches_click_thresholds]
+left_stick_up = 0.5
+left_stick_down = 0.5
+left_stick_left = 0.5
+left_stick_right = 0.5
+right_stick_up = 0.5
+right_stick_down = 0.5
+right_stick_left = 0.5
+right_stick_right = 0.5
+```
+
+Here's an example of "clicking" right with the left stick
+
+![Left and right sticks both at 0.5 all-round thresholds. Left clicks east](/std-left-clicks-east.svg)
+
+Define how far a stick must be pushed 
+in each direction to be counted as a "click". 
+Choose values between 0.0 and 1.0 (inclusive).
+
+
+## When to recognize double-clicks and click-and-holds
+
+```
+[profiles.switch_click_event_thresholds]
+minimum_milliseconds_down_for_click_and_hold = 500
+maximum_milliseconds_between_clicks_for_double_click = 500
+```
+
+## Clicking with triggers
+
+Define how far a trigger-2 (L2 or R2) must be 
+pressed down to be counted as a "click". 
+Choose values between 0.0 and 1.0 (inclusive).
+```
+[profiles.trigger_2_switches_click_thresholds]
+left_trigger_2 = 0.3
+right_trigger_2 = 0.3
+```

@@ -1,0 +1,21 @@
+---
+title: Adjust mouse speeds
+sidebar:
+  order: 4
+---
+
+import UserSettingsFileLocationInstruction from '../../../components/UserSettingsFileLocationInstruction.astro'
+
+Set how fast mouse scrolling and mouse
+cursor movements should be.
+
+<UserSettingsFileLocationInstruction/>
+
+Add the following under `[[profiles]]`. These values are the defaults. Start from here and adjust until you get a speed that you're comfortable with.
+```
+[profiles.stick_cardinal_levers.mouse_controls]
+scroll_scale_factor = 1.0
+cursor_move_scale_factor = 5.0
+```
+
+

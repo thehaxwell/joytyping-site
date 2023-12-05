@@ -1,0 +1,47 @@
+---
+title: Fix stick drift
+sidebar:
+  order: 3
+---
+import UserSettingsFileLocationInstruction from '../../../components/UserSettingsFileLocationInstruction.astro'
+
+Stick drift, also known as analog stick drift, is when a controller's thumbsticks seem to move on their own.
+
+How do you know your controller may be suffering from stick drift while using Joytyping? Without you doing anything:
+- Your mouse cursor moves
+- The pages or windows you visit scroll vertically or horizontally
+- Random or unexpeted letters are being typed
+
+We can't help you fix your controller. But we can help you avoid being distrubed by it while you type.
+
+First we need to find out how far the drift goes for affected sticks.
+
+## 1. Diagnose the stick drift
+
+Visit
+<a href="https://hardwaretester.com/gamepad" target="_blank">this online controller tester</a>.
+
+Plug in your controller and put it down once the website has detected it.
+
+Read the numbers for AXIS 0 and AXIS 1. Are they moving away from `0.00000` automatically? If they are then wait for 2 minutes and note the highest number (treating negative numbers as positive numbers) you see among the two. We'll call this number the **drift upper limit** for the left stick.
+
+Do the same with AXIS 2 and AXIS 3. The highest number you see among the two will be the **drift upper limit** for the right stick.
+
+## 2. Deal with stick drift by creating a deadzone
+
+To solve stick-drift, we'll create a deadzone from the stick's resting position (`0.0`) to the drift upper limits you got for the sticks when we [diagnosed the stick drift](#1-diagnose-the-stick-drift). 
+Movements within the deadzone will be ignored.
+
+We'll create this deadzone using user settings.
+
+<UserSettingsFileLocationInstruction/>
+
+Add the following under `[[profiles]]`.
+For the values, use the drift upper limits you got for the sticks when we [diagnosed the stick drift](#1-diagnose-the-stick-drift).
+```
+[profiles.stick_cardinal_levers.deadzone_upper_limits]
+left_stick = 0.0
+right_stick = 0.0
+```
+
+
