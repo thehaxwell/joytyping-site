@@ -5,6 +5,9 @@ import svelte from "@astrojs/svelte";
 // https://astro.build/config
 export default defineConfig({
   integrations: [starlight({
-    title: 'Joytyping'
+    title: 'Joytyping',
+    social: {
+        github: 'https://github.com/thehaxwell/joytyping',
+    },
   }), svelte()]
 });
